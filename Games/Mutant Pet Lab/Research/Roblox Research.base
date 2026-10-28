@@ -1,0 +1,77 @@
+filters:
+  and:
+    - file.inFolder("Games/Mutant Pet Lab/Research/Competitors")
+    - type == "research"
+formulas:
+  tags_text: if(research_tags, research_tags.join(", "), "")
+properties:
+  file.name:
+    displayName: Game
+  research_target:
+    displayName: Target
+  category:
+    displayName: Category
+  evidence:
+    displayName: Evidence
+  researched_on:
+    displayName: Researched
+  formula.tags_text:
+    displayName: Strengths
+views:
+  - type: table
+    name: All researched games
+    order:
+      - file.name
+      - category
+      - evidence
+      - formula.tags_text
+      - researched_on
+  - type: table
+    name: UI-heavy examples
+    filters: research_tags.contains("ui")
+    order:
+      - file.name
+      - category
+      - evidence
+  - type: table
+    name: Map references
+    filters: research_tags.contains("map")
+    order:
+      - file.name
+      - category
+      - evidence
+  - type: table
+    name: Creature references
+    filters: research_tags.contains("creature")
+    order:
+      - file.name
+      - category
+      - evidence
+  - type: table
+    name: Gameplay-loop examples
+    filters: research_tags.contains("loop")
+    order:
+      - file.name
+      - category
+      - evidence
+  - type: table
+    name: Strong onboarding
+    filters: research_tags.contains("onboarding")
+    order:
+      - file.name
+      - category
+      - evidence
+  - type: table
+    name: Anti-pattern examples
+    filters: research_tags.contains("anti-pattern")
+    order:
+      - file.name
+      - category
+      - evidence
+  - type: table
+    name: Recently researched
+    order:
+      - file.name
+      - researched_on
+      - file.mtime
+    limit: 20

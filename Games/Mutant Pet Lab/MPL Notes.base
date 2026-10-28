@@ -1,0 +1,55 @@
+filters:
+  and:
+    - file.inFolder("Games/Mutant Pet Lab")
+    - 'file.ext == "md"'
+    - 'type == "system" || type == "project" || type == "planning"'
+
+formulas:
+  updated_on: 'if(updated, updated, file.mtime.format("YYYY-MM-DD"))'
+  links_in: 'file.backlinks.length'
+  generated_flag: 'if(generated, "generated", "hand-written")'
+
+properties:
+  file.name:
+    displayName: Note
+  type:
+    displayName: Type
+  status:
+    displayName: Status
+  formula.updated_on:
+    displayName: Updated
+  formula.links_in:
+    displayName: "Linked from"
+  formula.generated_flag:
+    displayName: Origin
+
+views:
+  - type: table
+    name: "All MPL notes"
+    groupBy:
+      property: type
+      direction: ASC
+    order:
+      - file.name
+      - status
+      - formula.generated_flag
+      - formula.updated_on
+      - formula.links_in
+  - type: table
+    name: "Systems"
+    filters:
+      and:
+        - 'type == "system"'
+    order:
+      - file.name
+      - system
+      - formula.generated_flag
+      - formula.links_in
+  - type: list
+    name: "Open planning"
+    filters:
+      and:
+        - 'type == "planning"'
+    order:
+      - file.name
+      - status

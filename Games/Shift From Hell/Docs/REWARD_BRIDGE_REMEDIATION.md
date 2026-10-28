@@ -1,0 +1,1 @@
+/Users/luiscontreras/Claude's Personal Workspace/ShiftFromHell/docs/REWARD_BRIDGE_REMEDIATION.md

@@ -1,0 +1,22 @@
+---
+source_file: "current/source/ServerStorage/UnitTest/Cases/PropertyService_Test.luau"
+type: "code"
+community: "Community 2"
+location: "L8"
+tags:
+  - graphify/code
+  - graphify/INFERRED
+  - community/Community_2
+---
+
+# fixture()
+
+## Connections
+- [[PropertyService_Test.luau]] - `contains` [EXTRACTED]
+- [[Schema.BuildRuntimeState()]] - `calls` [INFERRED]
+- [[Schema.GetCapacity()]] - `calls` [INFERRED]
+- [[Schema.GetDiscoveryCount()]] - `calls` [INFERRED]
+- [[Schema.NewProfile()]] - `calls` [INFERRED]
+- [[Service.new()]] - `calls` [INFERRED]
+
+#graphify/code #graphify/INFERRED #community/Community_2

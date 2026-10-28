@@ -1,0 +1,66 @@
+filters:
+  and:
+    - file.inFolder("Games/Mutant Pet Lab/Species")
+    - 'type == "species"'
+
+formulas:
+  rarity_rank: 'if(rarity == "Common", 1, if(rarity == "Uncommon", 2, if(rarity == "Rare", 3, if(rarity == "Epic", 4, if(rarity == "Legendary", 5, 6)))))'
+  how: 'if(obtain, obtain.join(", "), "")'
+  secret_icon: 'if(secret, "🔒", "")'
+
+properties:
+  file.name:
+    displayName: Species
+  rarity:
+    displayName: Rarity
+  habitat:
+    displayName: Habitat
+  sample_class:
+    displayName: Samples
+  mutation_cost:
+    displayName: "Mutation cost (R)"
+  formula.how:
+    displayName: "How to get"
+  formula.secret_icon:
+    displayName: Secret
+
+views:
+  - type: table
+    name: "By rarity"
+    groupBy:
+      property: rarity
+      direction: ASC
+    order:
+      - file.name
+      - formula.secret_icon
+      - habitat
+      - sample_class
+      - formula.how
+      - mutation_cost
+  - type: table
+    name: "By habitat"
+    groupBy:
+      property: habitat
+      direction: ASC
+    order:
+      - file.name
+      - rarity
+      - formula.how
+  - type: table
+    name: "Mutation-only"
+    filters:
+      and:
+        - 'mutation_only == true'
+    order:
+      - file.name
+      - rarity
+      - formula.secret_icon
+      - mutation_cost
+    summaries:
+      mutation_cost: Sum
+  - type: cards
+    name: "Cards"
+    order:
+      - file.name
+      - rarity
+      - habitat

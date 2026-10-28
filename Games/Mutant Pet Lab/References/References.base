@@ -1,0 +1,86 @@
+filters:
+  and:
+    - file.inFolder("Games/Mutant Pet Lab/References")
+    - type == "reference"
+    - status != "example"
+formulas:
+  added: if(date_added, date_added, file.ctime.format("YYYY-MM-DD"))
+properties:
+  file.name:
+    displayName: Reference
+  category:
+    displayName: Category
+  status:
+    displayName: Status
+  strength:
+    displayName: Strength
+  source:
+    displayName: Source
+  formula.added:
+    displayName: Date added
+views:
+  - type: table
+    name: All references
+    order:
+      - file.name
+      - category
+      - status
+      - strength
+      - source
+      - formula.added
+  - type: table
+    name: By category
+    groupBy:
+      property: category
+      direction: ASC
+    order:
+      - file.name
+      - status
+      - strength
+      - formula.added
+  - type: cards
+    name: Active references
+    filters:
+      and:
+        - status == "active"
+    order:
+      - file.name
+      - category
+      - strength
+  - type: table
+    name: Needs review
+    filters:
+      and:
+        - status == "needs-review"
+    order:
+      - file.name
+      - category
+      - source
+      - formula.added
+  - type: cards
+    name: Creature references
+    filters:
+      and:
+        - category == "creature"
+    order:
+      - file.name
+      - status
+      - strength
+  - type: cards
+    name: Map references
+    filters:
+      and:
+        - category == "map"
+    order:
+      - file.name
+      - status
+      - strength
+  - type: cards
+    name: UI references
+    filters:
+      and:
+        - category == "ui"
+    order:
+      - file.name
+      - status
+      - strength

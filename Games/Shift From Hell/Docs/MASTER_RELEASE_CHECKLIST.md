@@ -1,0 +1,1 @@
+/Users/luiscontreras/Claude's Personal Workspace/ShiftFromHell/MASTER_RELEASE_CHECKLIST.md

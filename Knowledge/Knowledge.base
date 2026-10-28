@@ -1,0 +1,35 @@
+filters:
+  and:
+    - file.inFolder("Knowledge")
+    - file.hasTag("knowledge")
+    - 'file.name != "Index"'
+
+formulas:
+  source_games: 'if(sources, sources.join(", "), "")'
+  backlinks: 'file.backlinks.length'
+  updated: 'file.mtime.format("YYYY-MM-DD")'
+
+properties:
+  file.name:
+    displayName: Lesson
+  formula.source_games:
+    displayName: "Learned from"
+  formula.backlinks:
+    displayName: "Linked from"
+  formula.updated:
+    displayName: Updated
+
+views:
+  - type: table
+    name: "All lessons"
+    order:
+      - file.name
+      - formula.source_games
+      - formula.backlinks
+      - formula.updated
+  - type: list
+    name: "Recently updated"
+    limit: 5
+    order:
+      - file.name
+      - formula.updated

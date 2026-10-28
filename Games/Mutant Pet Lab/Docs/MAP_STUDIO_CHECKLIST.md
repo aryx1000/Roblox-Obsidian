@@ -1,0 +1,1 @@
+/Users/luiscontreras/Claude's Personal Workspace/MutantPetLab/map_overhaul/STUDIO_CHECKLIST.md
